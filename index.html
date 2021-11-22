@@ -4,14 +4,25 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Matchmaker Lite</title>
+    <title>Matchmaker for the Web</title>
 </head>
 
+
+<style>
+    body {
+      background-image: url('matchmaker-background.jpg');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+    </style>
+
 <body>
+    
     <h1>Matchmaker for the Web</h1>
     <p>Instructions...</p>
-
-    <label>Nickleback is the greatest rock band of all time.</label>
+   
+    <label>Mayonnaise is the best condiment.</label>
     <select id="q1">
         <option value="5">Strongly Agree</option>
         <option value="4">Agree</option>
@@ -21,7 +32,7 @@
     </select>
     <br /><br />
 
-    <label>Nickleback is the greatest rock band of all time.</label>
+    <label>I really like walks in the park.</label>
     <select id="q2">
         <option value="5">Strongly Agree</option>
         <option value="4">Agree</option>
@@ -31,7 +42,7 @@
     </select>
     <br /><br />
 
-    <label>Nickleback is the greatest rock band of all time.</label>
+    <label>I enjoy buying lots of cloths.</label>
     <select id="q3">
         <option value="5">Strongly Agree</option>
         <option value="4">Agree</option>
@@ -41,7 +52,7 @@
     </select>
     <br /><br />
 
-    <label>Nickleback is the greatest rock band of all time.</label>
+    <label>I am very lazy and don't work very hard in school.</label>
     <select id="q4">
         <option value="5">Strongly Agree</option>
         <option value="4">Agree</option>
@@ -51,7 +62,7 @@
     </select>
     <br /><br />
 
-    <label>Android phones are better than Iphones.</label>
+    <label>I enjoy videogames and movies.</label>
     <select id="q5">
         <option value="5">Strongly Agree</option>
         <option value="4">Agree</option>
@@ -74,6 +85,8 @@ function calculateCompatibility() {
         5, /*strongly agree */ 
         2, /*disageree*/ 
         1, /* strongly disagree */
+        5,
+        5,
     ]
 
     const MAX_SCORE = 15;
@@ -102,17 +115,31 @@ function calculateCompatibility() {
     console.log(document.getElementById("q3").selectedOptions[0].vlaue);
     console.log(question1Response);
 
+    console.log("Question 4 Answers:");
+    console.log(document.getElementById('q4').selectedOptions[0].text);
+    console.log(document.getElementById("q4").selectedOptions[0].vlaue);
+    console.log(question1Response);
+
+    console.log("Question 5 Answers:");
+    console.log(document.getElementById('q5').selectedOptions[0].text);
+    console.log(document.getElementById("q5").selectedOptions[0].vlaue);
+    console.log(question1Response);
+
     // Todo: calculate compatibility scores 
     let question1Compatibility = 5 - Math.abs(question1Response - DESIRED_RESPONSE[0]);
     let question2Compatibility = 5 - Math.abs(question2Response - DESIRED_RESPONSE[1]);
     let question3Compatibility = 5 - Math.abs(question3Response - DESIRED_RESPONSE[2]);
+    let question4Compatibility = 5 - Math.abs(question4Response - DESIRED_RESPONSE[3]);
+    let question5Compatibility = 5 - Math.abs(question5Response - DESIRED_RESPONSE[4]);
 
     console.log("c1="+question1Compatibility);
     console.log("c2="+question2Compatibility);
     console.log("c3="+question3Compatibility);
+    //console.log("c4="+question3Compatibility);
+    //console.log("c5="+question3Compatibility);
 
     // calculate total compatbibily
-    let totalCompatibility = question1Compatibility + question2Compatibility + question3Compatibility;
+    let totalCompatibility = question1Compatibility + question2Compatibility + question3Compatibility + question4Compatibility + question5Compatibility;
 
     // Convert totalcompatibility to a percentage. 
     totalCompatibility *= 100 / MAX_SCORE;
@@ -126,4 +153,5 @@ document.getElementById("compatibility").innerHTML = "Your compatibility is:   "
 
 </script>
 </body>
+
 </html>
