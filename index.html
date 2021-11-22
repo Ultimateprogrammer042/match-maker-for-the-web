@@ -1,7 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
+    
+
+<head>
+    <meta charset="UTF-8">
+    <title>Matchmaker Lite</title>
+</head>
+
+<body>
+    <h1>Matchmaker Lite</h1>
+    <p>Instructions...</p>
+
+    <label>Nickleback is the greatest rock band of all time.</label>
+    <select id="q1">
+        <option value="5">Strongly Agree</option>
+        <option value="4">Agree</option>
+        <option value="3">Neither agree nor disagree</option>
+        <option value="2">Disagree</option>
+        <option value="1">Strongly Disagree</option>
+    </select>
+    <br /><br />
+
+    <label>Nickleback is the greatest rock band of all time.</label>
+    <select id="q2">
+        <option value="5">Strongly Agree</option>
+        <option value="4">Agree</option>
+        <option value="3">Neither agree nor disagree</option>
+        <option value="2">Disagree</option>
+        <option value="1">Strongly Disagree</option>
+    </select>
+    <br /><br />
+
+    <label>Nickleback is the greatest rock band of all time.</label>
+    <select id="q3">
+        <option value="5">Strongly Agree</option>
+        <option value="4">Agree</option>
+        <option value="3">Neither agree nor disagree</option>
+        <option value="2">Disagree</option>
+        <option value="1">Strongly Disagree</option>
+    </select>
+    <br /><br />
+
+    <label>Nickleback is the greatest rock band of all time.</label>
+    <select id="q4">
+        <option value="5">Strongly Agree</option>
+        <option value="4">Agree</option>
+        <option value="3">Neither agree nor disagree</option>
+        <option value="2">Disagree</option>
+        <option value="1">Strongly Disagree</option>
+    </select>
+    <br /><br />
+
+    <label>Android phones are better than Iphones.</label>
+    <select id="q5">
+        <option value="5">Strongly Agree</option>
+        <option value="4">Agree</option>
+        <option value="3">Neither agree nor disagree</option>
+        <option value="2">Disagree</option>
+        <option value="1">Strongly Disagree</option>
+    </select>
+
+    <br /><br /><br />
+    <button onclick="calculateCompatibility()">Calculate Compatability</button>
+    <p id="compatibility"> </p>
+
+<script>
+console.log("Starting Matchmaker Lite...");
+
+function calculateCompatibility() {
+    console.log("calculateCompatibility()");
+
+    const DESIRED_RESPONSE = [
+        5, /*strongly agree */ 
+        2, /*disageree*/ 
+        1, /* strongly disagree */ 
+    ]
+
+    const MAX_SCORE = 15;
 
 
-<p>Hello World</p>
+    // Get the current values of the dropdown controls.
+    let question1Response = document.getElementById('q1').selectOptions[0].value;
+    let question2Response = document.getElementById('q2').selectOptions[0].value;
+    let question3Response = document.getElementById('q3').selectOptions[0].value;
+    let question4Response = document.getElementById('q4').selectOptions[0].value;
+    let question5Response = document.getElementById('q5').selectOptions[0].value;
 
+    // optionally log the values associated with question 1 through 3 on the console 
+    console.log("Question 1 Answers:");
+    console.log(document.getElementById('q1').selectOptions[0].text);
+    console.log(document.getElementById("q1").selectOptions[0].vlaue);
+    console.log(question1Response);
+
+    console.log("Question 2 Answers:");
+    console.log(document.getElementById('q2').selectOptions[0].text);
+    console.log(document.getElementById("q2").selectOptions[0].vlaue);
+    console.log(question1Response);
+
+    console.log("Question 3 Answers:");
+    console.log(document.getElementById('q3').selectOptions[0].text);
+    console.log(document.getElementById("q3").selectOptions[0].vlaue);
+    console.log(question1Response);
+
+    // Todo: calculate compatibility scores 
+    let question1Compatibility = 5 - Math.abs(question1Response - DESIRED_RESPONSE[0]);
+    let question2Compatibility = 5 - Math.abs(question2Response - DESIRED_RESPONSE[1]);
+    let question3Compatibility = 5 - Math.abs(question3Response - DESIRED_RESPONSE[2]);
+
+    console.log("c1="+question1Compatibility);
+    console.log("c2="+question2Compatibility);
+    console.log("c3="+question3Compatibility);
+
+    // calculate total compatbibily
+    let totalCompatibility = question1Compatibility + question2Compatibility + question3Compatibility;
+
+    // Convert totalcompatibility to a percentage. 
+    totalCompatibility *= 100 / MAX_SCOREl;
+    totalCompatibility = Math.round(totalCompatibility);
+    console.log("totalCompatibility="+ totalCompatibility); 
+
+
+
+document.getElementById("compatibility").innerHTML = "Your compatibility is:   "+totalCompatibility;
+}
+
+</script>
+</body>
 </html>
