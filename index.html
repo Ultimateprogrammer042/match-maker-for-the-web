@@ -62,7 +62,7 @@
 
     <br /><br /><br />
     <button onclick="calculateCompatibility()">Calculate Compatability</button>
-    <p id="compatibility"> </p>
+    <p id="compatibility"></p>
 
 <script>
 console.log("Starting Matchmaker Lite...");
@@ -73,33 +73,33 @@ function calculateCompatibility() {
     const DESIRED_RESPONSE = [
         5, /*strongly agree */ 
         2, /*disageree*/ 
-        1, /* strongly disagree */ 
+        1, /* strongly disagree */
     ]
 
     const MAX_SCORE = 15;
 
 
     // Get the current values of the dropdown controls.
-    let question1Response = document.getElementById('q1').selectOptions[0].value;
-    let question2Response = document.getElementById('q2').selectOptions[0].value;
-    let question3Response = document.getElementById('q3').selectOptions[0].value;
-    let question4Response = document.getElementById('q4').selectOptions[0].value;
-    let question5Response = document.getElementById('q5').selectOptions[0].value;
+    let question1Response = document.getElementById('q1').selectedOptions[0].value;
+    let question2Response = document.getElementById('q2').selectedOptions[0].value;
+    let question3Response = document.getElementById('q3').selectedOptions[0].value;
+    let question4Response = document.getElementById('q4').selectedOptions[0].value;
+    let question5Response = document.getElementById('q5').selectedOptions[0].value;
 
     // optionally log the values associated with question 1 through 3 on the console 
     console.log("Question 1 Answers:");
-    console.log(document.getElementById('q1').selectOptions[0].text);
-    console.log(document.getElementById("q1").selectOptions[0].vlaue);
+    console.log(document.getElementById('q1').selectedOptions[0].text);
+    console.log(document.getElementById("q1").selectedOptions[0].vlaue);
     console.log(question1Response);
 
     console.log("Question 2 Answers:");
-    console.log(document.getElementById('q2').selectOptions[0].text);
-    console.log(document.getElementById("q2").selectOptions[0].vlaue);
+    console.log(document.getElementById('q2').selectedOptions[0].text);
+    console.log(document.getElementById("q2").selectedOptions[0].vlaue);
     console.log(question1Response);
 
     console.log("Question 3 Answers:");
-    console.log(document.getElementById('q3').selectOptions[0].text);
-    console.log(document.getElementById("q3").selectOptions[0].vlaue);
+    console.log(document.getElementById('q3').selectedOptions[0].text);
+    console.log(document.getElementById("q3").selectedOptions[0].vlaue);
     console.log(question1Response);
 
     // Todo: calculate compatibility scores 
@@ -115,7 +115,7 @@ function calculateCompatibility() {
     let totalCompatibility = question1Compatibility + question2Compatibility + question3Compatibility;
 
     // Convert totalcompatibility to a percentage. 
-    totalCompatibility *= 100 / MAX_SCOREl;
+    totalCompatibility *= 100 / MAX_SCORE;
     totalCompatibility = Math.round(totalCompatibility);
     console.log("totalCompatibility="+ totalCompatibility); 
 
